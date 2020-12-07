@@ -1,0 +1,57 @@
+{% extends 'shared/site.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/details_photos.css' %}">
+
+{% endblock %}
+
+{% block site_content %}
+    <div class="photo-root">
+        <div class="photo-image">
+            <img src="{{ photo.image_url }}" alt="image of {{ photo.title }}">
+        </div>
+        <div class="photo-info">
+
+            <ul class="info-like">
+                <li><span class="underline">Type:</span> {{ photo.type }}</li>
+                <li><span class="underline">Title:</span> {{ photo.title }}</li>
+                <li><span class="underline">Date:</span> {{ photo.date }}</li>
+                <li><span class="underline">Description:</span> {{ photo.description }}</li>
+            </ul>
+            <div class="btns">
+                <a href="{% url 'edit photo' photo.pk %}" class="btn green">Edit</a>
+                <a href="{% url 'delete photo' photo.pk %}" class="btn red">Delete</a>
+            </div>
+            <div class="photo-buttons">
+                <a href="{% url 'like photo' photo.id %}"><i class="far fa-thumbs-up fa-lg"></i></a>
+            </div>
+
+            Like: {{ photo.like_set.count }}
+
+        </div>
+        <div class="d-block" style="background-color: #e3ebf1; padding:2%;">
+            {% if photo.comment_set.count > 0 %}
+                {% for comment in photo.comment_set.all %}
+                    <div class="box">
+                        <h5><em>{{ comment.text }}</em></h5>
+                        <hr>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="box">
+                    <h3>There are no comments for this photo.</h3>
+                </div>
+            {% endif %}
+            <div class="box">
+                <form method="post" action="{% url 'photo details or comment' photo.pk %}">
+                    {{ form }}
+                    {% csrf_token %}
+                    <button class="btn btn-primary mt-2" type="submit">
+                        Add comment
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
