@@ -4,14 +4,14 @@
     margin: 2rem auto;
     display: flex;
     /*align-content: center;*/
-    border: 2px solid #888686;
+    border: 2px solid #aeadad;
     border-radius: 0.3em;
 }
 
 h1 {
     padding-top: 1rem;
     text-align: center;
-    padding-bottom:1rem;
+    padding-bottom: 1rem;
     font-weight: 500;
     color: #645c5c;
 }
@@ -27,9 +27,6 @@ input[type="text"], select {
     border-radius: 0.3em;
     border: 2px solid #888686;
     outline: none;
-}
-form {
-    display: inline-block;
 }
 
 input[type="text"]:focus, select:focus, option:focus {
@@ -68,18 +65,30 @@ input[type="text"], select, option {
     background: #fff;
 }
 
-label{
- display: block;
- width: 150px;
- float: left;
- margin-bottom: 10px;
+label {
+    display: block;
+    width: 150px;
+    float: left;
+    margin-bottom: 10px;
 }
 
 label {
- text-align: left;
+    text-align: left;
     padding: 0.3em;
 }
 
 br {
- clear: left;
+    clear: left;
+}
+
+.photo-edit {
+    margin-left: 3em;
+}
+body{
+    background-color: #fffefe;
+}
+
+.edit-form {
+    background-color: #e3eff8;
+    display: inline-block;
 }

@@ -15,6 +15,6 @@ class PhotoForm(forms.ModelForm):
         widgets = {
             'image_url': forms.TextInput(
                 attrs={
-                    'id': 'img_input',
+                    'id': 'img_new',
                 })
         }
