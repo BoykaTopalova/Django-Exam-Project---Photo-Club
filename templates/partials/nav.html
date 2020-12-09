@@ -5,8 +5,16 @@
         <li><a href="{% url 'index' %}">Home</a></li>
         <li><a href="{% url 'list photos' %}">Gallery</a></li>
         <li><a href="{% url 'create photo' %}">Submit a photo</a></li>
-
-        <li class="auth"><a href="">Sign In</a></li>
-        <li><a href="">Sign Up</a></li>
+        {% if user.is_authenticated %}
+            <li class="auth">
+                <a href="{% url 'user profile' user.id %}">{{ user.username }}</a>
+            </li>
+            <li>
+                <a href="{% url 'signout user' %}">SingOut</a>
+            </li>
+        {% else %}
+            <li class="auth"><a href="{% url 'login' %}">Sign In</a></li>
+            <li><a href="{% url 'signup user' %}">Sign Up</a></li>
+        {% endif %}
     </ul>
 </nav>

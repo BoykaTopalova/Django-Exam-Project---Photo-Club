@@ -11,10 +11,10 @@
         {% for photo in photos %}
             <li class="list-item">
                 <div class="photo-img">
-                    <img src="{{ photo.image_url }}" alt="image of {{ photo.name }}">
+                    <img src="{{ photo.image.url }}" alt="image of {{ photo.title }}">
                 </div>
                 <div class="photo-details">
-                    <p class="photo-info">{{ photo.type }} {{ photo.name }}, Date: {{ photo.date }}</p>
+                    <p class="photo-info">{{ photo.type }} {{ photo.title }}, Date: {{ photo.date }}</p>
                     <p class="photo-description">{{ photo.description }}</p>
                     <div class="photo-buttons">
                         <a class="btn" href="{% url 'photo details or comment' photo.pk %}">

@@ -1,0 +1,47 @@
+{% extends 'shared/site.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock %}
+
+{% block site_title %}Photo Club{% endblock %}
+
+{% block site_content %}
+    <section class="form-sign_up">
+        <form action="#" method="post">
+            <fieldset>
+                <legend>SignUp</legend>
+                {{ form }}
+                {% csrf_token %}
+                 <button class="btn">SignUp</button>
+            <span>Have an account?<a href="url to login" style="color:orange; padding-left: 0.8em;">Sign in here</a></span>
+            </fieldset>
+
+        </form>
+    </section>
+
+
+{% endblock %}
+{#
+{##}
+{#            <p class="field">
+{#                <label for="password">Username</label>#}
+{#                <span class="input">#}
+{#						<input type="text" name="username" id="username"/>#}
+{#						<span class="actions"></span>#}
+{#						<i class="fas fa-user"></i>#}
+{#					</span>#}
+{#            </p>
+{##}
+{#            <p class="field">#}
+{#                <label for="password">Password</label>#}
+{#                <span class="input">#}
+{#						<input type="password" name="password" id="password"/>#}
+{#						<span class="actions"></span>#}
+{#						<i class="fas fa-key"></i>#}
+{#					</span>#}
+{#            </p>#}
+{##}
+{#            #}
+{#

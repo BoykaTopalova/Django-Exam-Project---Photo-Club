@@ -13,7 +13,7 @@ from photos.models import Photo, Like, Comment
 class PhotoAdmin(admin.ModelAdmin):
     # fields = ('type', 'title')
     list_display = ('id', 'type', 'title', 'data',)
-    list_filter = ('type',)
+    list_filter = ('type', 'date')
 
     # inlines = (
     #     LikeInLine,

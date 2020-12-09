@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from core.clean_up import clean_up_files
 from photos.forms.comment_form import CommentForm
 from photos.forms.photo_form import PhotoForm
 from photos.models import Photo, Comment, Like
@@ -104,9 +105,13 @@ def persist_photo(request, photo, template_name):
         }
         return render(request, f'{template_name}', context)
     else:
-        form = PhotoForm(request.POST, instance=photo)
+        old_image = photo.image
+        form = PhotoForm(request.POST, request.FILES, instance=photo)
         if form.is_valid():
+            if old_image:
+                clean_up_files(old_image.path)
             form.save()
+            Like.objects.filter(photo_id=photo.id).delete()
             return redirect('photo details or comment', photo.pk)
         context = {
             'form': form,

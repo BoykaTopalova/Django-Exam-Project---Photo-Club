@@ -12,23 +12,23 @@
     <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-            <form method="post" action="{% url 'edit photo' photo.pk %}" class="edit-form">
+            <form method="post" action="{% url 'edit photo' photo.pk %}" class="edit-form" enctype="multipart/form-data">
                 {{ form }}
                 {% csrf_token %}
-                <img id="img_current_photo" src="{{ photo.image_url }}" class="photo-edit" alt="">
+                <img id="img_current_photo" src="{{ photo.image.url }}" class="photo-edit" alt="">
                 <button class="btn btn-primary mt-2" type="submit">Edit</button>
             </form>
         </div>
         <div class="col-lg-3"></div>
     </div>
-    <script>
-         function updateImage(e) {
-            let img = document.getElementById('img_current_photo');
-            let url = this.value;
-            img.src = url;
-        }
-
-        document.getElementById('img_new').addEventListener('input', updateImage);
-    </script>
+{#    <script>#}
+{#         function updateImage(e) {#}
+{#            let img = document.getElementById('img_current_photo');#}
+{#            let url = this.value;#}
+{#            img.src = url;#}
+{#        }#}
+{##}
+{#        document.getElementById('img_new').addEventListener('input', updateImage);#}
+{#    </script>#}
 
 {% endblock %}

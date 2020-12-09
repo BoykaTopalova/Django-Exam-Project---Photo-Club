@@ -78,10 +78,12 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: #645c5c;
+    margin-top: 0.8em;
 }
 
 header div {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url("/static/image/dylan-hargraves-iDvZGD28b-0-unsplash.jpg") no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)),
+    url("/static/image/dylan-hargraves-iDvZGD28b-0-unsplash.jpg") no-repeat center center;
     background-size: cover;
     color: white;
     padding: 9em 0 9em 3em;
@@ -110,7 +112,9 @@ header div i {
 }
 
 
-
+#root > header > div > p{
+    margin-bottom: 2em;
+}
 
 
 
