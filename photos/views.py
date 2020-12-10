@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -14,12 +15,19 @@ def list_photos(request):
     return render(request, 'photos/photos_list.html', context)
 
 
+@login_required
 def details_or_comment_photo(request, pk):
     photo = Photo.objects.get(pk=pk)
     if request.method == 'GET':
         context = {
             'photo': photo,
             'form': CommentForm(),
+            'can_delete': request.user == photo.user.user,
+            'can_edit': request.user == photo.user.user,
+            'can_like': request.user != photo.user.user,
+            'has_like': photo.like_set.filter(user_id=request.user.userprofile.id).exists(),
+            'can_comment': request.user != photo.user.user,
+
         }
         return render(request, 'photos/photos_details.html', context)
     else:
@@ -27,6 +35,7 @@ def details_or_comment_photo(request, pk):
         if form.is_valid():
             comment = Comment(text=form.cleaned_data['text'], )
             comment.photo = photo
+            comment.user = request.user.userprofile
             comment.save()
             return redirect('photo details or comment', pk)
         context = {
@@ -36,16 +45,25 @@ def details_or_comment_photo(request, pk):
         return render(request, 'photos/photos_details.html', context)
 
 
+@login_required
 def like_photo(request, pk):
-    photo = Photo.objects.get(pk=pk)
-    like = Like()
-    like.photo = photo
-    like.save()
+    like = Like.objects.filter(user_id=request.user.userprofile.id, photo_id=pk).first()
+    if like:
+        like.delete()
+    else:
+        photo = Photo.objects.get(pk=pk)
+        like = Like(user=request.user.userprofile)
+        like.photo = photo
+        like.save()
     return redirect('photo details or comment', pk)
 
 
+@login_required
 def delete_photo(request, pk):
     photo = Photo.objects.get(pk=pk)
+    if photo.user.user != request.user:
+        # forbiden
+        pass
     if request.method == 'GET':
         context = {
             'photo': photo,
@@ -98,6 +116,7 @@ def delete_photo(request, pk):
 
 def persist_photo(request, photo, template_name):
     if request.method == 'GET':
+        photo.user = request.user.userprofile
         form = PhotoForm(instance=photo)
         context = {
             'form': form,
@@ -120,11 +139,13 @@ def persist_photo(request, photo, template_name):
         return render(request, f'{template_name}', context)
 
 
+@login_required
 def edit_photo(request, pk):
     photo = Photo.objects.get(pk=pk)
     return persist_photo(request, photo, 'photo_edit.html')
 
 
+@login_required
 def create_photo(request):
     photo = Photo()
     return persist_photo(request, photo, 'photo_create.html')

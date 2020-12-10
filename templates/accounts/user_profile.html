@@ -1,43 +1,70 @@
 {% extends 'shared/site.html' %}
-
+{% load static %}
 
 {% block styles %}
-
+    <link rel="stylesheet" href="{% static 'css/user_profile_gallery.css' %}">
 {% endblock %}
 
 {% block site_title %}Photo Club{% endblock %}
 
 {% block site_content %}
-  <div class="text-center">
-    <h1>Hello, profile_user!</h1>
-    <h5>This is your profile</h5>
-    <img class="rounded-circle mb-3" src="profile_picture_url" alt="Generic placeholder image" width="140" height="140">
-    <div class="w-50 m-auto">
-      form
-    </div>
-  </div>
-    <hr>
-    if photos
-    <h2 class='text-center'>Your's photos</h2>
-  <div class="row">        
-        <div class="row">
-        for photo in photos
-        <div class="col-lg-4">
-            <div class="card" style="width: 18rem;">
-                <img src="{{photo.image.url}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ photo.type }} {{ photo.title }}, Date: {{ photo.date }}</h5>
-                    <p class="card-text">{{ photo.descriptions }}</p>
-                    <p class="card-text"><strong>Owner: {{ photo.user }}</strong></p>
-                    <a href="{% url 'photo details or comment' photo.id %}" class="btn btn-primary">See details</a>
-                </div>
-            </div>
+    <div class="profile">
+        {% if profile_user.user %}
+        <h1>Hello, {{ profile_user.username }}!</h1>
+        <h5>This is your profile</h5>
+        {% else %}
+            <h1>{{ profile_user.username }}</h1>
+        {% endif %}
+
+
+        {% if profile.profile_picture %}
+            <img class="profile_picture" src="{{ profile.profile_picture.url }}" alt="Generic placeholder image">
+        {% else %}
+            <img class="profile_picture"
+                 src="https://www.sunsetlearning.com/wp-content/uploads/2019/09/User-Icon-Grey-300x300.png"
+                 alt="Generic placeholder image">
+        {% endif %}
+
+        <div class="w-50 m-auto">
+            <form action="{% url 'current user profile' %}" method="post" enctype="multipart/form-data">
+                {{ form }}
+                {% csrf_token %}
+                <button class="btn">Upload</button>
+            </form>
         </div>
     </div>
-  </div>
-  else
-  <div class="text-center">
-    <h2>You have no photo</h2>
-    <a href="{% url 'create photo' %}" class="btn btn-success">Add Photo</a>
-  </div>
+    <hr>
+    {% if photos %}
+        <h2 class='gallery_title'>Your gallery!</h2>
+        <div class="site">
+            <div class="cards-list layout-masonry">
+                {% for photo in photos %}
+                    <article class="card">
+                        <div class="inner">
+                            <section class="card-media">
+                                <img src="{{ photo.image.url }}" class="card-img-top" alt="{{ photo.title }}">
+                            </section>
+                            <header class="card-header">
+                                <h3>{{ photo.type }} {{ photo.title }}, Date: {{ photo.date }}</h3>
+                            </header>
+                            <section class="card-content">
+                                <p>{{ photo.descriptions }}</p>
+                                <p class="card-text"><strong>Owner: {{ photo.user.user.username }}</strong></p>
+                            </section>
+                            <footer class="card-footer">
+                                <div class="buttons">
+                                    <a href="{% url 'photo details or comment' photo.id %}" class="btn">See details</a>
+                                </div>
+                            </footer>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="gallery_title">
+            <h2>You have no photo</h2>
+            <a href="{% url 'create photo' %}" class="btn">Add Photo</a>
+        </div>
+    {% endif %}
 {% endblock %}

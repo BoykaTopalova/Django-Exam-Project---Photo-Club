@@ -2,28 +2,33 @@
 {% load static %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/list-photos.css' %}">
+   <link rel="stylesheet" href="{% static 'css/user_profile_gallery.css' %}">
 {% endblock %}
 
 {% block site_content %}
-    <h1>Gallery</h1>
-    <ul class="list-horizontal list-photo">
-        {% for photo in photos %}
-            <li class="list-item">
-                <div class="photo-img">
-                    <img src="{{ photo.image.url }}" alt="image of {{ photo.title }}">
-                </div>
-                <div class="photo-details">
-                    <p class="photo-info">{{ photo.type }} {{ photo.title }}, Date: {{ photo.date }}</p>
-                    <p class="photo-description">{{ photo.description }}</p>
-                    <div class="photo-buttons">
-                        <a class="btn" href="{% url 'photo details or comment' photo.pk %}">
-                            See details
-                        </a>
+    <h1 class='gallery_title'>Gallery</h1>
+    <div class="site">
+        <div class="cards-list layout-masonry">
+            {% for photo in photos %}
+                <article class="card">
+                    <div class="inner">
+                        <section class="card-media">
+                            <img src="{{ photo.image.url }}" alt="image of {{ photo.title }}">
+                        </section>
+                        <header class="card-header">
+                            <p class="photo-info">{{ photo.type }} {{ photo.title }}, Date: {{ photo.date }}</p>
+                        </header>
+                        <section class="card-content">
+                            <p class="photo-description">{{ photo.description }}</p>
+                        </section>
+                        <footer class="card-footer">
+                            <div class="photo-buttons">
+                                <a class="btn" href="{% url 'photo details or comment' photo.pk %}">See details</a>
+                            </div>
+                        </footer>
                     </div>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
-
+                </article>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

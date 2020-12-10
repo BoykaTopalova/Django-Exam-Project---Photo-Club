@@ -53,7 +53,7 @@
     font-weight: 600;
 }
 
-.fa-thumbs-up {
+.fas, .far {
     padding-top: 1rem;
     color: #143380;
 }
@@ -82,7 +82,7 @@
 
 .btn:hover {
     border: 2px solid #05A2D3;
-    color: #05A2D3;
+    color: #05a2d3;
     background: #fff;
 }
 
@@ -123,4 +123,13 @@ label {
     border: 2px solid red;
     color: red;
     background: #fff;
+}
+.comment_user{
+    font-weight: bold;
+    font-size: 1.4em;
+
+     -webkit-text-stroke: 1px black;
+    -webkit-text-fill-color: #99e6f5;
+
+    text-shadow: 1px 1px 2px #000f8c;
 }
