@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i|PT+Serif:400,400i,700,700i");
-@import url('https://fonts.googleapis.com/css?family=Yellowtail');
 
 * {
     margin: 0;
@@ -8,7 +6,7 @@
 
 body {
     font-family: PT Sans, sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     box-sizing: inherit;
     max-width: 1500px;
     margin: 0 auto;
@@ -25,7 +23,7 @@ nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 1em 0;
+    padding: 0.8em 0;
     color: #645c5c;
     background: #eeeeee;
 }
@@ -48,7 +46,7 @@ nav p {
     font-weight: bold;
     text-decoration: none;
     padding: 0.4em;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin: 0.8em;
     text-shadow: 2px 2px 2px rgba(150, 150, 150, 1);
 }
@@ -78,25 +76,25 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: #645c5c;
-    margin-top: 0.8em;
+    margin-top: 0.7em;
 }
 
-header div {
+div.landing_page {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)),
     url("/static/image/dylan-hargraves-iDvZGD28b-0-unsplash.jpg") no-repeat center center;
     background-size: cover;
     color: white;
-    padding: 9em 0 9em 3em;
+    padding: 9em 0 6.2em 3em;
 }
 
 
-header div h1 {
+div.landing_page h1 {
     color: #e3ebf1;
     /*text-shadow: 0 2px 2px rgba(255, 255, 255, 0.4);*/
     text-shadow: 0 0 7px #17839b;
     padding-bottom: 0.5em;
     width: 60%;
-    font-size: 70px;
+    font-size: 67px;
 }
 
 header div i {
@@ -106,14 +104,16 @@ header div i {
 
 .about {
     color: #645c5c;
-    padding: 1rem 0 1rem 0;
+    padding: 0.5rem 0 0.5rem 0;
     text-align: center;
     background: #eeeeee;
+
+
 }
 
 
-#root > header > div > p{
-    margin-bottom: 2em;
+#root > header > div > p {
+    margin-bottom: 3.5em;
 }
 
 

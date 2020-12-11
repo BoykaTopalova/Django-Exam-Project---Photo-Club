@@ -18,7 +18,7 @@ class Photo(models.Model):
     )
     type = models.CharField(max_length=15, choices=PHOTO_TYPES, default=UNKNOWN)
     title = models.CharField(max_length=25, blank=False)
-    date = models.DateTimeField(blank=False)
+    date = models.DateTimeField(auto_now_add=True)
     description = models.TextField(blank=False)
     image = models.ImageField(upload_to='photos')
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)

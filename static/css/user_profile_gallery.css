@@ -1,7 +1,12 @@
-
+h1{
+    color: #17839b;
+}
 .profile_picture {
     max-width: 130px;
+    min-height: 130px;
     margin-top: 2em;
+    border-radius:50%;
+    border: 1.5px solid #17839b;
 }
 
 .profile {

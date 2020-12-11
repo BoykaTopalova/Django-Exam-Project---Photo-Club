@@ -18,12 +18,12 @@
                 <li><span class="underline">Title:</span> {{ photo.title }}</li>
                 <li><span class="underline">Date:</span> {{ photo.date }}</li>
                 <li><span class="underline">Owner:</span>
-                    <a href="{% url 'user profile' photo.user.user_id %}">{{ photo.user.user.username }}</a>
+                    <a id="owner" href="{% url 'user profile' photo.user.user_id %}">{{ photo.user.user.username }}</a>
                 </li>
+
+                    <li><span class="underline">Description:</span> {{ photo.description }}</li>
+
             </ul>
-            <div>
-                <li><span class="underline">Description:</span> {{ photo.description }}</li>
-            </div>
             <div class="btns">
                 {% if can_edit %}
                     <a href="{% url 'edit photo' photo.pk %}" class="btn green">Edit</a>

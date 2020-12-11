@@ -10,8 +10,8 @@
 {% block site_content %}
     <div class="profile">
         {% if profile_user.user %}
-        <h1>Hello, {{ profile_user.username }}!</h1>
-        <h5>This is your profile</h5>
+            <h1>Hello, {{ profile_user.username }}!</h1>
+            <h5>This is your profile!</h5>
         {% else %}
             <h1>{{ profile_user.username }}</h1>
         {% endif %}
@@ -24,18 +24,23 @@
                  src="https://www.sunsetlearning.com/wp-content/uploads/2019/09/User-Icon-Grey-300x300.png"
                  alt="Generic placeholder image">
         {% endif %}
-
-        <div class="w-50 m-auto">
-            <form action="{% url 'current user profile' %}" method="post" enctype="multipart/form-data">
-                {{ form }}
-                {% csrf_token %}
-                <button class="btn">Upload</button>
-            </form>
-        </div>
+        {% if can_edit_profile %}
+            <div class="w-50 m-auto">
+                <form action="{% url 'current user profile' %}" method="post" enctype="multipart/form-data">
+                    {{ form }}
+                    {% csrf_token %}
+                    <button class="btn">Upload</button>
+                </form>
+            </div>
+        {% endif %}
     </div>
     <hr>
     {% if photos %}
-        <h2 class='gallery_title'>Your gallery!</h2>
+        {% if can_edit_profile %}
+            <h2 class='gallery_title'>Your gallery!</h2>
+        {% else %}
+            <h2 class='gallery_title'>{{ profile_user.username }} gallery!</h2>
+        {% endif %}
         <div class="site">
             <div class="cards-list layout-masonry">
                 {% for photo in photos %}

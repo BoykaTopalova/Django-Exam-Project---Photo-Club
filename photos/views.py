@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-
+from django.utils import timezone
 # Create your views here.
 from core.clean_up import clean_up_files
 from photos.forms.comment_form import CommentForm

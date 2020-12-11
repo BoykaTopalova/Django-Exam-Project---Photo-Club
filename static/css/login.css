@@ -71,7 +71,7 @@ input, select {
     justify-content: center;
 }
 
-input[type="text"], select {
+input[type="text"], input[type="password"], select {
     border-radius: 0.3em;
     border: 2px solid #888686;
     outline: none;
@@ -81,7 +81,7 @@ form {
     display: inline-block;
 }
 
-input[type="text"]:focus, select:focus, option:focus {
+input[type="text"]:focus, input#id_password:focus, select:focus, option:focus {
     border-color: #05A2D3;
 }
 
@@ -92,7 +92,7 @@ label {
     font-size: 1.2rem;
 }
 
-input[type="text"], select, option {
+input[type="text"], input#id_password, select, option {
     padding: 0.3em 0.8em;
 }
 
@@ -105,7 +105,7 @@ input[type="text"], select, option {
     border-radius: 0.3em;
     font-weight: bold;
     text-decoration: none;
-    padding: 0.5em;
+    padding: 0.4em;
     font-size: 1.4rem;
     margin: 0.8em auto;
 }
@@ -132,3 +132,4 @@ label {
 br {
     clear: left;
 }
+

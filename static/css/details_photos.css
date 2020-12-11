@@ -21,7 +21,7 @@
 }
 
 .photo-info {
-    padding-left: 50px;
+    padding-left: 70px;
     flex: 50%;
 }
 
@@ -124,12 +124,12 @@ label {
     color: red;
     background: #fff;
 }
-.comment_user{
+
+.comment_user, #owner {
     font-weight: bold;
     font-size: 1.4em;
-
-     -webkit-text-stroke: 1px black;
+    -webkit-text-stroke: 1px black;
     -webkit-text-fill-color: #99e6f5;
-
     text-shadow: 1px 1px 2px #000f8c;
 }
+

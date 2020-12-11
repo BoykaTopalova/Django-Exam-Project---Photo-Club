@@ -14,6 +14,7 @@ def user_profile(request, pk=None):
             'profile_user': user,
             'profile': user.userprofile,
             'photos': user.userprofile.photo_set.all(),
+            'can_edit_profile': user.username == request.user.username,
             'form': UserProfileForm,
         }
         return render(request, 'accounts/user_profile.html', context)
@@ -23,8 +24,6 @@ def user_profile(request, pk=None):
             form.save()
             return redirect('current user profile')
         return redirect('current user profile')
-
-
 
     # class SignUpForm(UserCreationForm):
 
