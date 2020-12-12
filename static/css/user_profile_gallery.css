@@ -1,17 +1,19 @@
-h1{
+h1 {
     color: #17839b;
 }
+
 .profile_picture {
     max-width: 130px;
     min-height: 130px;
     margin-top: 2em;
-    border-radius:50%;
-    border: 1.5px solid #17839b;
+    border-radius: 50%;
+    border: 2px solid #17839b;
 }
 
 .profile {
     text-align: center;
 }
+
 *, *:before, *:after {
     padding: 0;
     margin: 0;
@@ -22,14 +24,16 @@ html {
     box-sizing: border-box;
     font: 14px/1.5 Georgia, serif;
 }
+
 #root {
     padding: 0;
     margin: 0;
     box-sizing: inherit;
 
 }
+
 .site {
-     box-sizing: border-box;
+    box-sizing: border-box;
     font: 14px/1.5 Georgia, serif;
     max-width: 60rem;
     margin: auto;
@@ -145,8 +149,7 @@ html {
 }
 
 .card-header {
-    padding: 0.5em 1.5em;
-    padding-top: 1em;
+    padding: 1em 1.5em;
     line-height: 1.1;
 }
 
@@ -190,4 +193,9 @@ html {
     text-align: center;
     color: #645c5c;
     margin: 1em auto;
+}
+
+.user_profile_btn {
+    margin-bottom: 3rem;
+
 }

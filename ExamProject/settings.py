@@ -29,9 +29,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'common',
-    'photos',
-    'accounts',
+    'ExamProject.common',
+    'ExamProject.photos',
+    'ExamProject.accounts',
 
     'django.contrib.admin',
     'django.contrib.auth',

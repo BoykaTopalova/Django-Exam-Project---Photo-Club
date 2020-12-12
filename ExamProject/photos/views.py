@@ -1,11 +1,14 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.utils import timezone
+# from django.urls import reverse_lazy
+
 # Create your views here.
-from core.clean_up import clean_up_files
-from photos.forms.comment_form import CommentForm
-from photos.forms.photo_form import PhotoForm
-from photos.models import Photo, Comment, Like
+# from django.views.generic import CreateView
+
+from ExamProject.core.clean_up import clean_up_files
+from ExamProject.photos.forms.comment_form import CommentForm
+from ExamProject.photos.forms.photo_form import PhotoForm
+from ExamProject.photos.models import Photo, Comment, Like
 
 
 def list_photos(request):
@@ -68,7 +71,7 @@ def delete_photo(request, pk):
         context = {
             'photo': photo,
         }
-        return render(request, 'photo_delete.html', context)
+        return render(request, 'photos/photo_delete.html', context)
     else:
         photo.delete()
         return redirect('list photos')
@@ -116,7 +119,6 @@ def delete_photo(request, pk):
 
 def persist_photo(request, photo, template_name):
     if request.method == 'GET':
-        photo.user = request.user.userprofile
         form = PhotoForm(instance=photo)
         context = {
             'form': form,
@@ -129,6 +131,9 @@ def persist_photo(request, photo, template_name):
         if form.is_valid():
             if old_image:
                 clean_up_files(old_image.path)
+            photo = form.save(commit=False)
+            photo.user = request.user.userprofile
+            photo.save()
             form.save()
             Like.objects.filter(photo_id=photo.id).delete()
             return redirect('photo details or comment', photo.pk)
@@ -142,10 +147,16 @@ def persist_photo(request, photo, template_name):
 @login_required
 def edit_photo(request, pk):
     photo = Photo.objects.get(pk=pk)
-    return persist_photo(request, photo, 'photo_edit.html')
+    return persist_photo(request, photo, 'photos/photo_edit.html')
 
 
 @login_required
 def create_photo(request):
     photo = Photo()
-    return persist_photo(request, photo, 'photo_create.html')
+    return persist_photo(request, photo, 'photos/photo_create.html')
+
+# class PhotoCreateView(CreateView):
+#     model = Photo
+#     template_name = 'cbv/photo_create.html'
+#     fields = '__all__'
+#     success_url = reverse_lazy('list photos')

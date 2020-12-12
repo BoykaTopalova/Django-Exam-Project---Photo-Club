@@ -63,7 +63,7 @@
                     <form method="post" action="{% url 'photo details or comment' photo.pk %}">
                         {{ form }}
                         {% csrf_token %}
-                        <button class="btn btn-primary mt-2" type="submit">
+                        <button class="btn" type="submit">
                             Add comment
                         </button>
                     </form>

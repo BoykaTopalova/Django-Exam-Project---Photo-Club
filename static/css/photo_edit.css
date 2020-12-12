@@ -3,9 +3,10 @@
     max-width: 500px;
     margin: 2rem auto;
     display: flex;
-    /*align-content: center;*/
-    border: 2px solid #aeadad;
     border-radius: 0.3em;
+    box-shadow: 2px 2px 2px 1px #17839b;
+    background: #e3f0fa;
+    width: 500px;
 }
 
 h1 {
@@ -70,25 +71,29 @@ label {
     width: 150px;
     float: left;
     margin-bottom: 10px;
-}
-
-label {
     text-align: left;
-    padding: 0.3em;
-}
-
-br {
-    clear: left;
 }
 
 .photo-edit {
     margin-left: 3em;
 }
-body{
+
+body {
     background-color: #fffefe;
 }
 
 .edit-form {
     background-color: #e3eff8;
     display: inline-block;
+}
+
+textarea {
+    display: block;
+    width: 28rem;
+    margin: 0 auto;
+}
+
+
+li > a {
+    padding-top: 3em;
 }

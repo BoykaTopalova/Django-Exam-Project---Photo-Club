@@ -13,7 +13,7 @@
                 <a href="{% url 'signout user' %}">SingOut</a>
             </li>
         {% else %}
-            <li class="auth"><a href="{% url 'login' %}">Sign In</a></li>
+            <li class="auth"><a href="{% url 'signin user' %}">Sign In</a></li>
             <li><a href="{% url 'signup user' %}">Sign Up</a></li>
         {% endif %}
     </ul>

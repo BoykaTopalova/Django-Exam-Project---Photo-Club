@@ -1,6 +1,6 @@
 from django import forms
 
-from photos.models import Photo
+from ExamProject.photos.models import Photo
 
 
 class PhotoForm(forms.ModelForm):
@@ -11,10 +11,10 @@ class PhotoForm(forms.ModelForm):
 
     class Meta:
         model = Photo
-        fields = '__all__'
-        widgets = {
-            'image_url': forms.TextInput(
-                attrs={
-                    'id': 'img_new',
-                })
-        }
+        exclude = ('user',)
+        # widgets = {
+        #     'image_url': forms.TextInput(
+        #         attrs={
+        #             'id': 'img_new',
+        #         })
+        # }

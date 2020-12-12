@@ -11,7 +11,7 @@
 
     <h1 class="text-center">Add new photo</h1>
     <div class="row">
-        <form method="post" class="edit-form" enctype="multipart/form-data">
+        <form method="post" action="{% url 'create photo' %}" class="edit-form" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form }}
             <button class="btn btn-primary mt-2" type="submit">Create</button>

@@ -1,12 +1,11 @@
 .form-sign_up {
     background: #FFF;
-    padding: 5rem 28rem;
-    margin: 0 auto;
 }
 
 form {
+    display: inline-block;
     max-width: 30rem;
-    margin: 0 auto;
+    margin: 3rem auto;
 }
 
 form,
@@ -71,17 +70,19 @@ input, select {
     justify-content: center;
 }
 
-input[type="text"], input[type="password"], select {
+input[type="text"],
+input[type="password"],
+select {
     border-radius: 0.3em;
     border: 2px solid #888686;
     outline: none;
 }
 
-form {
-    display: inline-block;
-}
-
-input[type="text"]:focus, input#id_password:focus, select:focus, option:focus {
+input[type="text"]:focus,
+input#id_password1:focus,
+input#id_password2:focus,
+input#id_text:focus,
+select:focus, option:focus {
     border-color: #05A2D3;
 }
 
@@ -92,7 +93,9 @@ label {
     font-size: 1.2rem;
 }
 
-input[type="text"], input#id_password, select, option {
+input[type="text"],
+input[type="password"],
+select, option {
     padding: 0.3em 0.8em;
 }
 
