@@ -6,20 +6,16 @@ from ExamProject.photos.models import Photo, Like, Comment
 
 # Register your models here.
 
-# class LikeInLine(admin.TabularInline):
-#     model = Like
-
 
 class PhotoAdmin(admin.ModelAdmin):
-    # fields = ('type', 'title')
-    list_display = ('id', 'type', 'title', 'data',)
+    list_display = ('id', 'type', 'title', 'date',)
     list_filter = ('type', 'date')
 
-    # inlines = (
-    #     LikeInLine,
-    # )
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('id', 'text', 'photo_id')
 
 
-admin.site.register(Photo)
+admin.site.register(Photo, PhotoAdmin)
 admin.site.register(Like)
-admin.site.register(Comment)
+admin.site.register(Comment, CommentAdmin)

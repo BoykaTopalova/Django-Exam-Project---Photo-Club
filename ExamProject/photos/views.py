@@ -155,8 +155,4 @@ def create_photo(request):
     photo = Photo()
     return persist_photo(request, photo, 'photos/photo_create.html')
 
-# class PhotoCreateView(CreateView):
-#     model = Photo
-#     template_name = 'cbv/photo_create.html'
-#     fields = '__all__'
-#     success_url = reverse_lazy('list photos')
+
